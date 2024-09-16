@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/858401112.svg)](https://zenodo.org/doi/10.5281/zenodo.13770053)
 # RegretBlocker Data Collection Tool
 Users' decisions in recommendation systems are prone to be similar in similar decision frames. Even after watching a video, a socially engineered interface may make them signal their like of content that they do not like. RegretBlocker deletes content that users state they regret **outside of a platform**. This data collection tool can be run and deployed on any server capable of running docker. We provide installation instructions and our data collection tool. We provide learning tools for your personal RegretBlocker in the future.
 
