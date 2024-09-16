@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Session Overview</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="session-container">
+    <header class="session-info">
+        <p>Session from {{ session_data.day }}, {{ session_data.start_time }}-{{ session_data.end_time }} {{ session['timezone'] }} ({{session_data.sess_num_videos}} videos)</p>
+    </header>
+    <section class="instructions">
+        <ul>
+            <li>You will rate the videos of this session on the following screens.</li>
+            <li>Progress toward the minimum number of videos to rate is shown in a progress bar on the top.</li>
+            <li>When you have reached this minimum, a button to end the experiment appears, but you may continue.</li>
+            <li>To help you recall the video, we show you information on the session of a video, its thumbnail, duration, title, channel, and its description text.</li>
+            <li>You may rate a video with <b>click</b> or using your <b>arrow keys</b></li>
+                <ul>
+                    <li>The left key (or click on 💩 ⬅️) means a <b>regret</b> (that is: You would prefer the world where you hadn't chosen to watch this video)</li>
+                    <li>The right key (or click on 💖 ➡️) means a <b>non-regret</b>, where you remember watching this video.</li>
+                    <li>The up key (or click on ❓⬆️) means that you <b>don't remember watching this video.</b></li>
+                    <li>and the down key (or click on 😶 ⬇️) means that <b>you don't want to disclose.</li>
+                </ul>
+            <li>There may be attention check questions. You receive payment for all videos on which you disclose a rating.</li>
+        </ul>
+    </section>
+
+    <section class="video-container">
+        {% for video in session_data.videos %}
+            <div class="video" style="background-image: url('{{ video.thumbnail }}');">
+                <div class="watched-at">Started watching at: {{ video.watched_at }}</div>
+                <div class="video-details">
+                    <p class="video-title">{{ video.title }}</p>
+                    <p class="channel-name">{{ video.channel_name }}</p>
+                    <p class="video-views">{{ video.display_views }} views • uploaded {{ video.display_age }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+</div>
+
+<a href="/regret_video" class="start-rating-btn">Rate Videos</a>
+
+</body>
+</html>

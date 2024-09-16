@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rate Videos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="content-wrapper">
+    <div class="progress-container">
+        <div class="progress-bar" style="width: {{ progress }}%;">{{session['n_rated_videos']}}/{{ num_total_videos }} completed</div>
+    </div>
+    {% if session['n_rated_videos'] >= num_total_videos %}
+    <div class="finish-experiment-container">
+        <button class="finish-btn" id="finishBtn" onclick="confirmFinishExperiment()">Finish experiment</button>
+    </div>
+    {% endif %}
+    <!-- Session Information -->
+    <div class="content-wrapper"><canvas id="countdown"></canvas><p class="session-info">{{ session_data.day }}, {{ session_data.start_time }}-{{ session_data.end_time }} {{ session['timezone'] }}, {{ session['current_video']+1 }}/{{ session_data.sess_num_videos }}</p></div>
+    <div class="video-container">
+        <!-- Using a div for the thumbnail to control background and size -->
+        <div class="video-thumbnail" style="background-image: url('{{ video.thumbnail }}');">
+            <div class="duration">{{ video.display_duration }}</div>
+        </div>
+        <div class="video-metadata-container">
+            <img src="{{ video.channel_icon }}" alt="Channel" class="channel-photo">
+            <div class="video-info">
+                <p class="video-title">{{ video.title }}</p>
+                <p class="channel-name">{{ video.channel_title }}</p>
+                <p class="video-views">{{ video.display_views }} views • uploaded {{ video.display_age }}</p>
+            </div>
+        </div>
+        <p class="video-description">{{ video.description.strip().split("\n")[0] }}</p>
+    </div>
+
+    <div class="action-buttons">
+        <form action="{{ request.endpoint }}" method="post" id="regretForm">
+            <input type="hidden" name="video_id" value="{{ video.video_id }}">
+            <input type="hidden" name="history_id" value="{{ video.history_id }}">
+            <input type="hidden" id="regretValue" name="regret" value="">
+            <input type="hidden" name="is_attention_check" value="{{ 'attention_check' if video.video_id is none else '' }}">
+            <div class="keyboard-layout">
+                <div class="keyboard-row">
+                    <button type="button" class="dont-remember-btn" id="noRememberBtn" title="click or press UP arrow key" onclick="triggerOption(this, 'dont remember')" disabled>❓⬆️<br>I don't remember</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="regret-btn" id="regretBtn" title="click or press LEFT arrow key" onclick="triggerOption(this, 'yes')" disabled>💩 ⬅️<br>Regret it</button>
+                    <button type="button" class="skip-btn" id="skipBtn" title="click or press DOWN arrow key" onclick="triggerOption(this, 'skip')" disabled>😶 ⬇️<br>Skip</button>
+                    <button type="button" class="no-regret-btn" id="noRegretBtn" title="click or press RIGHT arrow key" onclick="triggerOption(this, 'no')" disabled>💖 ➡️<br>Loved it</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>

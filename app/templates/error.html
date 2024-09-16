@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Error page displaying an error message">
+    <title>Error</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Error</h1>
+    </header>
+    <main>
+        <p>{{ message }}</p>
+        <p><a href="{{ url_for('index') }}">Back to main page</a></p>
+    </main>
+</body>
+</html>

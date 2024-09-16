@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submission Success</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Submission Successful!</h1>
+        <p>HIT completion code: <strong>{{ session['filename'] }}</strong></p>
+        <p>Thank you for your submission. You can close this page or return to the <a href="{{ url_for('index') }}">homepage</a>.</p>
+    </div>
+</body>
+</html>

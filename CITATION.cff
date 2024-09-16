@@ -1,0 +1,36 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 0.9.0
+title: Regret Data Collection Tool
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Andreas
+    family-names: Haupt
+    email: haupt@mit.edu
+    affiliation: M.I.T.
+    orcid: 'https://orcid.org/0000-0002-2952-4188'
+  - given-names: Mihaela
+    family-names: Curmei
+    email: mcurmei@berkeley.edu
+    affiliation: UC-Berkeley
+repository-code: >-
+  https://github.com/Algorithmic-Personalization/Regrets
+abstract: >-
+  Users' decisions in recommendation systems are prone to be
+  similar in similar decision frames. Even after watching a
+  video, a socially engineered interface may make them
+  signal their like of content that they do not like.
+  The regret data collection tool allows to elicit what 
+  users regret having consumed.
+keywords:
+  - social media
+  - regret
+  - behavioral engineering
+license: MIT
+commit: ' 1af8ca4'
+version: '0.9'
+date-released: '2024-09-16'

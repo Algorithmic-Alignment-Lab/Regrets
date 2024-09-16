@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Regrets Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<h1>Summary of Your Submitted Regrets Data</h1>
+{% if regrets %}
+    <table>
+        <tr>
+            <th scope="col">Video Title</th>
+            <th scope="col">Regret?</th>
+        </tr>
+        {% for regret in regrets %}
+            <tr>
+                <td>{{ regret['title'] }}</td>
+                <td>{{ regret['regret'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No regrets recorded.</p>
+{% endif %}
+<form action="{{ url_for('post_submit') }}" method="post">
+    <button type="submit">Submit Regrets</button>
+</form>
+</body>
+</html>

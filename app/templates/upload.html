@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Your YouTube Watch History</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="upload-page">
+  <div class="container">
+    <form action="{{ url_for('process', uid=session['uid']) }}" method="post" enctype="multipart/form-data">
+      <h1 class="form-heading">Upload YouTube Watch History</h1>
+      <label for="timezone">Select your most frequent timezone:</label>
+      <select name="timezone" id="timezone" required>
+        <option value="" selected disabled>Select your most frequent timezone</option>
+        <option value="-5.0">(UTC-05:00) Eastern Time (US & Canada)</option>
+        <option value="-6.0">(UTC-06:00) Central Time (US & Canada)</option>
+        <option value="-7.0">(UTC-07:00) Mountain Time (US & Canada)</option>
+        <option value="-8.0">(UTC-08:00) Pacific Time (US & Canada)</option>
+      </select>
+      <label for="file">Upload your YouTube watch history file:</label>
+      <input type="file" name="file" id="file" accept=".json" required>
+      <div class="upload-btn-container">
+        <div class="loader" id="loader" style="display: none;"></div>
+        <input type="submit" value="Upload" id="uploadBtn">
+      </div>
+      <div class="instructions">
+        <p>Please upload your YouTube watch history file in JSON format.</p>
+      </div>
+    </form>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.querySelector('form');
+      var uploadBtn = document.getElementById('uploadBtn');
+      var loader = document.getElementById('loader');
+
+      form.addEventListener('submit', function() {
+        uploadBtn.style.display = 'none';
+        loader.style.display = 'inline-block'; // Show loader in place of the button
+      });
+    });
+  </script>
+</body>
+</html>
