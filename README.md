@@ -31,12 +31,7 @@ Then, the application should be accessible under http://127.0.0.1:5001/upload?ui
 - `static/`: contains `css` and `js` files
 - `templates/`: contains `html` templates
 - `uploads/`: stores uploaded data for regrets
-
-- `services/`: Business logic.
 - `utils/`: Utility functions.
-- `templates/`: HTML templates.
-
-- `scripts/`: Utility scripts.
 
 ## Contact
-For questions or support, contact [recsysexp@mit.edu](mailto:recsysexp@mit.edu).
+For questions or support, contact [haupt@csail.mit.edu](mailto:haupt@csail.mit.edu).
